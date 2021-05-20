@@ -1,0 +1,16 @@
+/home/dnleonardo/Desktop/Memory Game/test/bin/Debug/net5.0/test
+/home/dnleonardo/Desktop/Memory Game/test/bin/Debug/net5.0/test.deps.json
+/home/dnleonardo/Desktop/Memory Game/test/bin/Debug/net5.0/test.runtimeconfig.json
+/home/dnleonardo/Desktop/Memory Game/test/bin/Debug/net5.0/test.runtimeconfig.dev.json
+/home/dnleonardo/Desktop/Memory Game/test/bin/Debug/net5.0/test.dll
+/home/dnleonardo/Desktop/Memory Game/test/bin/Debug/net5.0/ref/test.dll
+/home/dnleonardo/Desktop/Memory Game/test/bin/Debug/net5.0/test.pdb
+/home/dnleonardo/Desktop/Memory Game/test/obj/Debug/net5.0/test.csprojAssemblyReference.cache
+/home/dnleonardo/Desktop/Memory Game/test/obj/Debug/net5.0/test.GeneratedMSBuildEditorConfig.editorconfig
+/home/dnleonardo/Desktop/Memory Game/test/obj/Debug/net5.0/test.AssemblyInfoInputs.cache
+/home/dnleonardo/Desktop/Memory Game/test/obj/Debug/net5.0/test.AssemblyInfo.cs
+/home/dnleonardo/Desktop/Memory Game/test/obj/Debug/net5.0/test.csproj.CoreCompileInputs.cache
+/home/dnleonardo/Desktop/Memory Game/test/obj/Debug/net5.0/test.dll
+/home/dnleonardo/Desktop/Memory Game/test/obj/Debug/net5.0/ref/test.dll
+/home/dnleonardo/Desktop/Memory Game/test/obj/Debug/net5.0/test.pdb
+/home/dnleonardo/Desktop/Memory Game/test/obj/Debug/net5.0/test.genruntimeconfig.cache
