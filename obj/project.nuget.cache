@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "C1y4O2fGKfgHOLyomLmHTYu2GzQmHlM/CORyonK+ph10jrOwMaVZepYHnLxUXbilLxERuzBbSuSsXfQbZVxV5Q==",
+  "dgSpecHash": "Fhctv0hZd1XJpqT7Lk1sNcHBkAV4VVjLsNjFdIg4uQGRPQzCroIVjXWStzrJJeoR8FwBMcq2GZ92UDGbe6YFJw==",
   "success": true,
-  "projectFilePath": "/home/dnleonardo/Desktop/Memory Game/test/test.csproj",
+  "projectFilePath": "/home/dnleonardo/Desktop/memory-game/game/test.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

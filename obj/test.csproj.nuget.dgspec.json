@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/dnleonardo/Desktop/Memory Game/test/test.csproj": {}
+    "/home/dnleonardo/Desktop/memory-game/game/test.csproj": {}
   },
   "projects": {
-    "/home/dnleonardo/Desktop/Memory Game/test/test.csproj": {
+    "/home/dnleonardo/Desktop/memory-game/game/test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/dnleonardo/Desktop/Memory Game/test/test.csproj",
+        "projectUniqueName": "/home/dnleonardo/Desktop/memory-game/game/test.csproj",
         "projectName": "test",
-        "projectPath": "/home/dnleonardo/Desktop/Memory Game/test/test.csproj",
+        "projectPath": "/home/dnleonardo/Desktop/memory-game/game/test.csproj",
         "packagesPath": "/home/dnleonardo/.nuget/packages/",
-        "outputPath": "/home/dnleonardo/Desktop/Memory Game/test/obj/",
+        "outputPath": "/home/dnleonardo/Desktop/memory-game/game/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/dnleonardo/.nuget/NuGet/NuGet.Config"
