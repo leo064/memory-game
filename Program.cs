@@ -6,53 +6,83 @@ namespace test
     {
         public static void Main()
         {
-            string[] showArray = {"?", "?", "?", "?", "?", "?",
-                         "?", "?", "?", "?", "?", "?"};
+            string[] showArray = { "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?"};
             string[] cleanArray = {"A", "A", "B", "B", "C", "C", "D", "D", "E", "E", "F", "F"};
             string[] shuffleArray = RandomizeArray(cleanArray);
+
             string[] selections = new string[2];  //array que armazena as cartas selecionadas
-            string[] selectionsNdx = new string[2]; //array que armazena o índice das cartas selecionadas
-            bool running = true;
+            int[] selectionsNdx = new int[2]; //array que armazena o índice das cartas selecionadas
+            List<int> correctNdx = new List<int>(); //list que armazena o índice de pares acertados.
+
+            int totalOfPairs = (cleanArray.Length)/2;
             int count = -1;
             int score = 0;
-            while (running){
+            while (score < totalOfPairs){
                 Console.Clear();
                 //This write is just for test.
-                Console.Write(" # "+shuffleArray[0] +" # "+shuffleArray[1]+" # "+shuffleArray[2] +
-                            "\n # "+ shuffleArray[3]+" # "+shuffleArray[4]+" # "+shuffleArray[5]+
-                            "\n # "+ shuffleArray[6]+" # "+shuffleArray[7]+" # "+shuffleArray[8]+
-                            "\n # "+ shuffleArray[9]+" # "+shuffleArray[10]+" # "+shuffleArray[11]);
-                for(int j = 0; j<12; j++){
+                Console.Write("\n # "+shuffleArray[0]+" # "+shuffleArray[1]+" # "+shuffleArray[2]+
+                              "\n # "+shuffleArray[3]+" # "+shuffleArray[4]+" # "+shuffleArray[5]+
+                              "\n # "+shuffleArray[6]+" # "+shuffleArray[7]+" # "+shuffleArray[8]+
+                              "\n # "+shuffleArray[9]+" # "+shuffleArray[10]+" # "+shuffleArray[11]);
+                for(int j = 0; j<cleanArray.Length; j++){
                     //to show array and break lines
                     if(j%3==0)
                         Console.WriteLine();
-                    Console.Write($" [{showArray[j]}] ");
+                    Console.Write($" |{showArray[j]}| ");
                 }
-                Console.WriteLine("\nLength: "+selections.Length);
-                Console.WriteLine("Count: "+count);
-                Console.WriteLine("Pares encontrados: "+score);
-                Console.WriteLine("\nQual carta deseja virar? (0-11)");
+                Console.WriteLine("\n\nPares encontrados: "+score);
+                Console.WriteLine($"Qual carta deseja virar? (0-{cleanArray.Length-1})");
                 int sideCard = int.Parse(Console.ReadLine());
-                
-                //carta selecionada, então adiciona +1 no contador:
+                while(correctNdx.Contains(sideCard)){
+                    Console.WriteLine("Essa carta já foi retirada do game!");
+                    Console.WriteLine($"\nQual carta deseja virar? (0-{cleanArray.Length-1})");
+                    sideCard = int.Parse(Console.ReadLine());
+                }
+
+                //carta selecionada. Então adiciona +1 no contador de cartas:
                 count++;
                 selections[count] = shuffleArray[sideCard];
-                selectionsNdx[count] = sideCard.ToString();
-                score = VerifyPairs(count, selections, selectionsNdx, score);
-
+                selectionsNdx[count] = sideCard;
                 showArray = ChangeIndex(sideCard, showArray, shuffleArray);
+                
+                //Verifica os pares selecionados :
                 if(count == 1){
-                //a partir do momento que a segunda carta for selecionada, array e count resetam\\
+
+                    // Soma +1 ao score do jogador caso ele acerte os pares de números. \\
+                    // selections[0] == primeira carta selecionada.
+                    // selections[1] == segunda carta selecionada.
+
+                    //só habilita a verificação se os indices forem diferentes :
+                    if(selectionsNdx[0] != selectionsNdx[1]){
+                        if(selections[0] == selections[1]){
+                            // Deixo os dois índices de visualização vazios, 
+                            // simbolizando que as cartas foram retiradas.
+                            showArray[selectionsNdx[0]] = " ";
+                            showArray[selectionsNdx[1]] = " ";
+                            // Adiciono os índices corretos digitados em uma lista para 
+                            // que eu possa bloquear esses índices de serem acessados novamente.
+                            correctNdx.Add(selectionsNdx[0]);
+                            correctNdx.Add(selectionsNdx[1]);
+                            score++;
+                        } else {
+                            showArray[selectionsNdx[0]] = "?";
+                            showArray[selectionsNdx[1]] = "?";
+                        }
+                    }
+
+                    //a partir do momento que a segunda carta for selecionada, selections e count resetam\\
                     selections = new string[2];
-                    selectionsNdx = new string[2];
+                    selectionsNdx = new int[2];
                     count = -1;
                 }
+                Console.Clear();
                 Console.Write(showArray+ "\n");
             }
+            Console.Clear();
+            Console.WriteLine("Parabéns! você achou os "+totalOfPairs+" pares do jogo da memória e sagrou-se vitorioso!");
         }
         static string[] ChangeIndex(int n, string[] show, string[] sArray){
             // Altera o array de visualização mostrando a carta virada no lugar da [?]. \\
-            Console.Clear();
             if(show[n] == "?"){
                 show[n] = sArray[n];
             }
@@ -82,20 +112,6 @@ namespace test
                 array[k] = aux;
             }
             return array;
-        }
-        static int VerifyPairs(int c, string[] slc, string[] slcNdx, int sc){
-            /* 
-            // Soma +1 ao score do jogador caso ele acerte os pares de números. \\
-            slc[0] == primeira carta selecionada.
-            slc[1] == segunda carta selecionada.
-            */
-            if(c == 1){
-                if(slcNdx[0] != slcNdx[1]){ //só habilita a verificação se os indices forem diferentes.
-                    if (slc[0] == slc[1])
-                        sc++;
-                }
-            }
-            return sc;
         }
    }
 }
