@@ -22,10 +22,10 @@ namespace test
             while (score < totalOfPairs){
                 Console.Clear();
                 //This write is just for test.
-                Console.Write("\n # "+shuffleArray[0]+" # "+shuffleArray[1]+" # "+shuffleArray[2]+
-                              "\n # "+shuffleArray[3]+" # "+shuffleArray[4]+" # "+shuffleArray[5]+
-                              "\n # "+shuffleArray[6]+" # "+shuffleArray[7]+" # "+shuffleArray[8]+
-                              "\n # "+shuffleArray[9]+" # "+shuffleArray[10]+" # "+shuffleArray[11]);
+                //Console.Write("\n # "+shuffleArray[0]+" # "+shuffleArray[1]+" # "+shuffleArray[2]+
+                //             "\n # "+shuffleArray[3]+" # "+shuffleArray[4]+" # "+shuffleArray[5]+
+                //             "\n # "+shuffleArray[6]+" # "+shuffleArray[7]+" # "+shuffleArray[8]+
+                //             "\n # "+shuffleArray[9]+" # "+shuffleArray[10]+" # "+shuffleArray[11]);
                 Console.WriteLine();
                 for(int j = 0; j<cleanArray.Length; j++){
                     //to show array and break lines
@@ -35,7 +35,6 @@ namespace test
                 }
                 Console.WriteLine("\n\nPares encontrados: "+score);
                 Console.WriteLine($"Qual carta deseja virar? (0-{cleanArray.Length-1})");
-                Console.WriteLine("Para finalizar o game digite 'q' e pressione enter ...");
                 int sideCard = int.Parse(Console.ReadLine());
                 while(correctNdx.Contains(sideCard)){
                     Console.WriteLine("Essa carta já foi retirada do game!");
@@ -55,6 +54,8 @@ namespace test
                     // Soma +1 ao score do jogador caso ele acerte os pares de números. \\
                     // selections[0] == primeira carta selecionada.
                     // selections[1] == segunda carta selecionada.
+                    // selections[2] == terceira carta selecionada que ao resetar count, passa a ser
+                    // a primeira carta.
 
                     //só habilita a verificação se os indices forem diferentes :
                     if(selectionsNdx[0] != selectionsNdx[1]){
@@ -81,7 +82,7 @@ namespace test
                     // reseto selections e selectionsNdx
                     selections = new string[3];
                     selectionsNdx = new int[3];
-                    // atribuo a primeira carta do novo vetor, a terceira carta selecionada anteriormente.                    selections[0] = lastCard;
+                    // atribuo a primeira carta do novo vetor, a terceira carta selecionada anteriormente.
                     selectionsNdx[0] = lastCardNdx;
                     selections[0] = lastCard;
                     // reseto count
