@@ -10,9 +10,11 @@ namespace test
             string[] cleanArray = {"A", "A", "B", "B", "C", "C", "D", "D", "E", "E", "F", "F"};
             string[] shuffleArray = RandomizeArray(cleanArray);
 
-            string[] selections = new string[2];  //array que armazena as cartas selecionadas
-            int[] selectionsNdx = new int[2]; //array que armazena o índice das cartas selecionadas
+            string[] selections = new string[3];  //array que armazena as cartas selecionadas
+            int[] selectionsNdx = new int[3]; //array que armazena o índice das cartas selecionadas
             List<int> correctNdx = new List<int>(); //list que armazena o índice de pares acertados.
+            string lastCard;
+            int lastCardNdx;
 
             int totalOfPairs = (cleanArray.Length)/2;
             int count = -1;
@@ -24,14 +26,16 @@ namespace test
                               "\n # "+shuffleArray[3]+" # "+shuffleArray[4]+" # "+shuffleArray[5]+
                               "\n # "+shuffleArray[6]+" # "+shuffleArray[7]+" # "+shuffleArray[8]+
                               "\n # "+shuffleArray[9]+" # "+shuffleArray[10]+" # "+shuffleArray[11]);
+                Console.WriteLine();
                 for(int j = 0; j<cleanArray.Length; j++){
                     //to show array and break lines
                     if(j%3==0)
                         Console.WriteLine();
-                    Console.Write($" |{showArray[j]}| ");
+                    Console.Write($" [{showArray[j]}] ");
                 }
                 Console.WriteLine("\n\nPares encontrados: "+score);
                 Console.WriteLine($"Qual carta deseja virar? (0-{cleanArray.Length-1})");
+                Console.WriteLine("Para finalizar o game digite 'q' e pressione enter ...");
                 int sideCard = int.Parse(Console.ReadLine());
                 while(correctNdx.Contains(sideCard)){
                     Console.WriteLine("Essa carta já foi retirada do game!");
@@ -46,7 +50,7 @@ namespace test
                 showArray = ChangeIndex(sideCard, showArray, shuffleArray);
                 
                 //Verifica os pares selecionados :
-                if(count == 1){
+                if(count == 2){
 
                     // Soma +1 ao score do jogador caso ele acerte os pares de números. \\
                     // selections[0] == primeira carta selecionada.
@@ -70,11 +74,20 @@ namespace test
                         }
                     }
 
-                    //a partir do momento que a segunda carta for selecionada, selections e count resetam\\
-                    selections = new string[2];
-                    selectionsNdx = new int[2];
-                    count = -1;
+                    // a partir do momento que a segunda carta for selecionada, selections e count resetam\\
+                    // pego a última carta do vetor, que é a terceira carta selecionada
+                    lastCard = selections[2];
+                    lastCardNdx = selectionsNdx[2];
+                    // reseto selections e selectionsNdx
+                    selections = new string[3];
+                    selectionsNdx = new int[3];
+                    // atribuo a primeira carta do novo vetor, a terceira carta selecionada anteriormente.                    selections[0] = lastCard;
+                    selectionsNdx[0] = lastCardNdx;
+                    selections[0] = lastCard;
+                    // reseto count
+                    count = 0;
                 }
+
                 Console.Clear();
                 Console.Write(showArray+ "\n");
             }
